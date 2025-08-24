@@ -1,35 +1,14 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { OnchainCliCalculator } from "../target/types/onchain_cli_calculator";
+import { expect } from 'chai';
 
 describe("onchain-cli-calculator", () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
 
-  const program = anchor.workspace.onchainCliCalculator as Program<OnchainCliCalculator>;
-
-  it("Is initialized!", async () => {
-    // Add your test here.
-    const tx = await program.methods.initialize().rpc();
-    console.log("Your transaction signature", tx);
-  });
-});
-
-
-
-
-import * as anchor from "@coral-xyz/anchor";
-import { Program } from "@coral-xyz/anchor";
-import { Calculator } from "../target/types/calculator";
-import { expect } from 'chai';
-
-//Mocha works using predescribed it blocks
-describe("calculator", () => {
-  // Configure the client to use the local cluster.
-  anchor.setProvider(anchor.AnchorProvider.env());
-
   //Referencing the program - Abstraction that allows us to call methods of our SOL program.
-  const program = anchor.workspace.Calculator as Program<Calculator>;
+  const program = anchor.workspace.OnchainCliCalculator as Program<OnchainCliCalculator>;
   const programProvider = program.provider as anchor.AnchorProvider;
 
   //Generating a keypair for our Calculator account
